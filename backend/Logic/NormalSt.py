@@ -1,7 +1,11 @@
 import numpy as np
 import time
 from RandomGenerator import pseudo_uniform
+from scipy import integrate
 
+def normal_probability_density(x):
+    constant = 1.0/np.sqrt(2*np.pi)
+    return (constant * np.exp((-x**2)/2.0))
 
 def pseudo_normal_st(mu=0, sigma=1, size=1):
     t = time.perf_counter()
@@ -11,20 +15,14 @@ def pseudo_normal_st(mu=0, sigma=1, size=1):
     seed2 = int(10**9*float(str(t-int(t))[0:]))
     U2 = pseudo_uniform(seed=seed2, size=size)
 
-    print(U1)
-    print(U2)
-
     Z0 = np.sqrt(-2*np.log(U1))*np.cos(2*np.pi*U2)
     Z1 = np.sqrt(-2*np.log(U1))*np.sin(2*np.pi*U2)
 
-    standard = (Z0-mu)/sigma
 
-    print(Z0)
-    print(Z1)
+    P,_ = integrate.quad(normal_probability_density,np.NINF,Z0)
 
-#Z0 = Z0*sigma+mu
 
-    return standard
+    return P
 
 print("Normal Standard is: ")
-print(pseudo_normal_st())
+print(pseudo_normal_st(0,1))
