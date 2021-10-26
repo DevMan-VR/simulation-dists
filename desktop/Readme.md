@@ -35,6 +35,7 @@ de masa de probabilidad  (según corresponda). Además la Interfaz debe permitir
 escoger entre las distintas distribuciones programadas. Puede usar cualquier 
 lenguaje para programar la interfaz. 
 
+#https://relopezbriega.github.io/blog/2016/06/29/distribuciones-de-probabilidad-con-python/
 
 4. Se debe entregar una presentación en .ppt que contenga: 
 1. Descripción del Problema  
