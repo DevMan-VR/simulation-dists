@@ -33,220 +33,202 @@ OPTIONS = [
 
 ] #etc
 
-def main():
 
-    master = Tk()
+class MainClass:
 
-    master.title("Tarea 1 Simulación")
+    def __init__(self):
+        self.master = Tk()
+        self.master.geometry("800x600")
+        self.master.title("Tarea 1 Simulación")
 
-    distSelectText = StringVar(master)
-    distSelectText.set(OPTIONS[0]) # default value
+        self.distSelectText = StringVar(self.master)
+        self.distSelectText.set(OPTIONS[0]) # default value
+        self.distSelect = OptionMenu(self.master, self.distSelectText, *OPTIONS)
+        self.distSelect.grid(column=1,row=0)
 
-    distSelect = OptionMenu(master, distSelectText, *OPTIONS)
-    distSelect.grid(column=1,row=0)
+        #Instanciando clases de distribución
+        self.Normal = NormalClass(self.master)
+        self.Poisson = PoissonClass(self.master)
+        self.Exponential = ExponentialClass(self.master)
+        self.NormalST = NormalSTClass(self.master)
+        self.Bernoulli = BernoulliClass(self.master)
+        self.Binomial = BinomialClass(self.master)
+        self.Geometric = GeometricClass(self.master)
+        self.Uniform = UniformClass(self.master)
+        self.Pareto = ParetoClass(self.master)
+        self.Chicuadrado = ChiCuadradoClass(self.master)
+        self.TStudent = TStudentClass(self.master)
 
-    
-    #Instanciando clases de distribución
-    Normal = NormalClass(master)
-    Poisson = PoissonClass(master)
-    Exponential = ExponentialClass(master)
-    NormalST = NormalSTClass(master)
-    Bernoulli = BernoulliClass(master)
-    Binomial = BinomialClass(master)
-    Geometric = GeometricClass(master)
-    Uniform = UniformClass(master)
-    Pareto = ParetoClass(master)
-    Chicuadrado = ChiCuadradoClass(master)
-    TStudent = TStudentClass(master)
+        self.currentDistribution = None
 
+        self.selectDistBtn =  Button(self.master,text="SELECT", command=lambda:self.render_dist_options(self.distSelectText.get()))
+        self.selectDistBtn.grid(column=2,row=0)
 
+        self.vaBtn = Button(self.master,text="Random V.A.", command=lambda:self.random_va(self.distSelectText.get()))
+        self.vaBtn.grid(column=2,row=6)
 
-    def render_dist_options(dist):
-        if dist == "Normal":
-            Normal.renderWidgets()
-            print("Entro en caso de Normal!")
-        elif dist == "Poisson":
-            Poisson.renderWidgets()
-            print("Entro en caso de la Poisson!")
-        elif dist == "Exponencial":
-            Exponential.renderWidgets()
-        elif dist == "Normal Estandar":
-            NormalST.renderWidgets()
-        elif dist == "Bernoulli":
-            Bernoulli.renderWidgets()
-            
-        elif dist == "Binomial":
-            Binomial.renderWidgets()
+        self.selectDistBtn = Button(self.master,text="CALCULAR", command=lambda:self.render_dist_graph(self.distSelectText.get()))
+        self.selectDistBtn.grid(column=1,row=6)
 
-        elif dist == "Geometrica":
-            Geometric.renderWidgets()
+        mainloop()
+        
 
-        elif dist == "Uniforme Continua":
-            Uniform.renderWidgets()
-
-        elif dist == "Pareto":
-            Pareto.renderWidgets()
-
-        elif dist == "Chi-Cuadrado":
-            Chicuadrado.renderWidgets()
-
-        elif dist == "T-Student":
-            TStudent.renderWidgets()
 
         
-        else:
-            Normal.removeWidgets()
-            Normal.removeVA()
-            Normal.clearGraph()
-
-            Poisson.removeWidgets()
-            Poisson.clearGraph()
-            Poisson.removeVA()
-
-            NormalST.removeWidgets()
-            NormalST.removeVA()
-            NormalST.removeGraph()
-
-            Bernoulli.removeWidgets()
-            Bernoulli.removeVA()
-            Bernoulli.removeGraph()
-
-            Binomial.removeWidgets()
-            Binomial.removeVA()
-            Binomial.removeGraph()
-
-            Geometric.removeWidgets()
-            Geometric.removeVA()
-            Geometric.removeGraph()
-
-            Uniform.removeWidgets()
-            Uniform.removeVA()
-            Uniform.removeGraph()
-
-            Pareto.removeWidgets()
-            Pareto.removeVA()
-            Pareto.removeGraph()
-
-            Chicuadrado.removeWidgets()
-            Chicuadrado.removeVA()
-            Chicuadrado.removeGraph()
-
-            TStudent.removeWidgets()
-            TStudent.removeVA()
-            TStudent.removeGraph()
 
 
-            print("Deberia remover el grafico de la normal!")
-            print("Deberia remover los widgets del UI!")
+    def render_dist_options(self,dist):
 
-    selectDistBtn = Button(master,text="SELECT", command=lambda:render_dist_options(distSelectText.get()))
-    selectDistBtn.grid(column=2,row=0)
+            #Si ya hay definido un current distribution entonces se le remueven sus componentes (clean up)
+            if self.currentDistribution != None:
+                self.currentDistribution.removeWidgets()
+                self.currentDistribution.removeVA()
+                self.currentDistribution.clearGraph()
+                self.currentDistribution = None
 
 
-    def random_va(dist):
+            if dist == "Normal":
+                self.Normal.renderWidgets()
+                self.currentDistribution = self.Normal
+                print("Entro en caso de Normal!")
+
+            elif dist == "Poisson":
+                self.Poisson.renderWidgets()
+                self.currentDistribution = self.Poisson
+                print("Entro en caso de la Poisson!")
+
+            elif dist == "Exponencial":
+                self.Exponential.renderWidgets()
+                self.currentDistribution = self.Exponential
+                print("Entro en caso de la Exponencial!")
+
+            elif dist == "Normal Estandar":
+                self.NormalST.renderWidgets()
+                self.currentDistribution = self.NormalST
+                print("Entro en caso de la Normal Estandar!")
+
+            elif dist == "Bernoulli":
+                self.Bernoulli.renderWidgets()
+                self.currentDistribution = self.Bernoulli
+                print("Entro en caso de la Bernoulli!")
+                
+            elif dist == "Binomial":
+                self.Binomial.renderWidgets()
+                self.currentDistribution = self.Binomial
+                print("Entro en caso de la Binomial!")
+
+            elif dist == "Geometrica":
+                self.Geometric.renderWidgets()
+                self.currentDistribution = self.Geometric
+                print("Entro en caso de la Geometrica!")
+
+            elif dist == "Uniforme Continua":
+                self.Uniform.renderWidgets()
+                self.currentDistribution = self.Uniform
+                print("Entro en caso de la Uniforme!")
+
+            elif dist == "Pareto":
+                self.Pareto.renderWidgets()
+                self.currentDistribution = self.Pareto
+                print("Entro en caso de la Pareto!")
+
+            elif dist == "Chi-Cuadrado":
+                self.Chicuadrado.renderWidgets()
+                self.currentDistribution = self.Chicuadrado
+                print("Entro en caso de la Chi-Cuadrado!")
+
+            elif dist == "T-Student":
+                self.TStudent.renderWidgets()
+                self.currentDistribution = self.TStudent
+                print("Entro en caso de la T-Student!")
+            
+
+    def random_va(self,dist):
         if dist == "Normal":
-            Normal.renderVA()
+            self.Normal.renderVA()
             print("Entro en caso de Normal VA")
         elif dist == "Poisson":
-            Poisson.renderVA()
+            self.Poisson.renderVA()
             print("Entro en caso de Poisson VA")
         elif dist == "Exponencial":
-            Exponential.renderVA()
+            self.Exponential.renderVA()
             print("Entro en caso de Exponential VA")
         elif dist == "Normal Estandar":
-            NormalST.renderVA()
+            self.NormalST.renderVA()
 
         elif dist == "Bernoulli":
-            Bernoulli.renderVA()
+            self.Bernoulli.renderVA()
 
         elif dist == "Binomial":
-            Binomial.renderVA()
+            self.Binomial.renderVA()
 
         elif dist == "Geometrica":
-            Geometric.renderVA()
+            self.Geometric.renderVA()
         
         elif dist == "Uniforme Continua":
-            Uniform.renderVA()
+            self.Uniform.renderVA()
         
         elif dist == "Pareto":
-            Pareto.renderVA()
+            self.Pareto.renderVA()
 
         elif dist == "Chi-Cuadrado":
-            Chicuadrado.renderVA()
+            self.Chicuadrado.renderVA()
 
         elif dist == "T-Student":
-            TStudent.renderVA()
+            self.TStudent.renderVA()
         
 
-        else:
-            Normal.removeVA()
-            print("Entro en el caso de remover la VA Exponential")
-
-    vaBtn = Button(master,text="Random V.A.", command=lambda:random_va(distSelectText.get()))
-    vaBtn.grid(column=2,row=6)
+        
 
 
-    def render_dist_graph(dist):
+    def render_dist_graph(self,dist):
         if dist == "Normal":
-            Normal.renderGraph()
+            self.Normal.renderGraph()
             print("Se va a graficar la normal!")
         elif dist == "Exponencial":
-            Exponential.renderGraph()
+            self.Exponential.renderGraph()
 
         elif dist == "Poisson":
-            Poisson.renderGraph()
+            self.Poisson.renderGraph()
 
         elif dist == "Normal Estandar":
-            NormalST.renderGraph()
+            self.NormalST.renderGraph()
 
         elif dist == "Bernoulli":
-            Bernoulli.renderGraph()
+            self.Bernoulli.renderGraph()
 
         elif dist == "Binomial":
-            Binomial.renderGraph()
+            self.Binomial.renderGraph()
 
         elif dist == "Geometrica":
-            Geometric.renderGraph()
+            self.Geometric.renderGraph()
         
         elif dist == "Uniforme Continua":
-            Uniform.renderGraph()
+            self.Uniform.renderGraph()
         
         elif dist == "Pareto":
-            Pareto.renderGraph()
+            self.Pareto.renderGraph()
 
         elif dist == "Chi-Cuadrado":
-            Chicuadrado.renderGraph()
+            self.Chicuadrado.renderGraph()
 
         elif dist == "T-Student":
-            TStudent.renderGraph()
+            self.TStudent.renderGraph()
         
 
-
-        else:
-            Poisson.clearGraph()
-            Exponential.clearGraph()
-            Normal.clearGraph()
-            Bernoulli.clearGraph()
-            print("Deberia remover el grafico de la normal!")
-
-    selectDistBtn = Button(master,text="CALCULAR", command=lambda:render_dist_graph(distSelectText.get()))
-    selectDistBtn.grid(column=1,row=6)
+       
 
     
+
+
+
+#Init Program
+
+main = MainClass()
+
+
+
+
+
+
     
-
-
-
-
-
-
-
-
-main()
-
-
-
-
-
-
-mainloop()
