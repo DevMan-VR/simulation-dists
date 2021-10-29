@@ -1,47 +1,46 @@
-1. Módulo que genere números pseudo-aleatorios usando el Método Congruencial 
-Multiplicativo, de acuerdo a la palabra del computador que utilice. El lenguaje a 
-usar puede ser  C, o Python. 
-
---CHECK
+Ian Quero
+Manuel Martínez
 
 
-2.  Módulo que genere variables aleatorias discretas y continuas, usando el módulo de 
-números pseudo-aleatorios. Las distribuciones obligatorias que deben programar 
-son:  (tutorial: https://towardsdatascience.com/how-to-generate-random-variables-from-scratch-no-library-used-4b71eb3c8dc7)  
+*** Para iniciar el proyecto se deben tener instalada previamente todas las librerias utilizadas en python3, tkinter, numpy, etc.
 
-    Exponencial - OK
-    Erlang OK
-    Normal(0,1) - OK
-    Normal  - OK
-    Uniforme continua - OK
-    Chi-cuadrado - OK
-    t-student - OK
-    Pareto - OK
-    Weibull  - OK
-    Triangular - DOING  ##Revisar
-    Uniforme discreta - PENDING
-    Bernoulli - OK
-    Poisson - OK
-    Binomial - OK
-    Geométrica - OK
-    
-    Estas distribuciones pueden calcularse usando el método más  adecuado (que Ud. deberá investigar).  
+Este proyecto se programó utilizando la version Python 3.10
+Las librerias utilizadas y que se deben instalar para que funcionen son:
+
+pip3 install tk
+pip3 install ttk
+pip3 install numpy
+pip3 install matplotlib
+pip3 install scipy
+pip3 install seaborn
 
 
-3. Programar una Interfaz debe ser amigable e interactiva,  que permita el  ingreso de 
-los parámetros característicos de las  distribuciones, y muestre como salida la 
-Función de distribución acumulada, función de densidad de probabilidad o función 
-de masa de probabilidad  (según corresponda). Además la Interfaz debe permitir 
-escoger entre las distintas distribuciones programadas. Puede usar cualquier 
-lenguaje para programar la interfaz. 
+Y finalmente para poder ejecutar el programa se debe instalar tkinter para python 3:
+sudo apt-get install python3-tk
 
-#https://relopezbriega.github.io/blog/2016/06/29/distribuciones-de-probabilidad-con-python/
 
-4. Se debe entregar una presentación en .ppt que contenga: 
-1. Descripción del Problema  
-2. Descripción de cada una de las distribuciones de probabilidad y el método 
-usado para generarla  
-3. Arquitectura de su programa 
-4. Implementación. 
-5. Conclusiones 
-Obs: Esta presentación es la base para su interrogación 
+Para ejecutar el proyecto hay que ejecutar el archivo Main.py dentro de la carpeta Tkinter
+
+python3 Main.py
+
+*** Asegurarse de que las librerias están bien instaladas, puede ser necesario aplicar apt-get install para algunas librerias como scipy.
+
+
+Responsabilidades
+
+Normal(0,1) - Ian
+Normal - Ian
+Uniforme discreta - Ian
+Bernoulli - Ian
+Poisson - Ian
+Binomial - Ian
+Geometrica - Ian
+Exponencial - Manu
+Erlang - Manu
+Uniforme Continua - Manu
+Chi cuadrado - Manu
+T Student - Manu
+Pareto - Manu
+Weibull - Manu
+Triangular - Manu
+
