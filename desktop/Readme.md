@@ -28,19 +28,19 @@ python3 Main.py
 
 Responsabilidades
 
-Normal(0,1) - Ian
-Normal - Ian
-Uniforme discreta - Ian
-Bernoulli - Ian
-Poisson - Ian
-Binomial - Ian
-Geometrica - Ian
-Exponencial - Manu
-Erlang - Manu
-Uniforme Continua - Manu
-Chi cuadrado - Manu
-T Student - Manu
-Pareto - Manu
-Weibull - Manu
-Triangular - Manu
+- Normal(0,1) - Ian
+- Normal - Ian
+- Uniforme discreta - Ian
+- Bernoulli - Ian
+- Poisson - Ian
+- Binomial - Ian
+- Geometrica - Ian
+- Exponencial - Manu
+- Erlang - Manu
+- Uniforme Continua - Manu
+- Chi cuadrado - Manu
+- T Student - Manu
+- Pareto - Manu
+- Weibull - Manu
+- Triangular - Manu
 
