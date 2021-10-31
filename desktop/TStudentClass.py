@@ -16,8 +16,10 @@ class TStudentClass:
         self.input1 = Entry(master)
         self.label3 = Label(master, text="V.A.", height=1)
         self.input3 = Entry(master)
-        self.canvas = None
+        self.canvas_FDP = None
+        self.canvas_FPA = None
         self.figure = None
+        self.name="T-Student"
         
 
         #mu, sigma = 0, 0.2 # media y desvio estandar
@@ -83,9 +85,9 @@ class TStudentClass:
         self.figure.add_subplot(111).plot(x, fp, '--')
 
         
-        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(column=1,row=4)
+        self.canvas_FDP = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
+        self.canvas_FDP.draw()
+        self.canvas_FDP.get_tk_widget().grid(column=1,row=4)
 
 
     def renderFPA(self):
@@ -103,15 +105,16 @@ class TStudentClass:
         self.figure.add_subplot(111).plot(x, fp, '--')
 
         
-        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(column=3,row=4)
+        self.canvas_FPA = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
+        self.canvas_FPA.draw()
+        self.canvas_FPA.get_tk_widget().grid(column=3,row=4)
 
 
 
 
     def clearGraph(self):
-        self.canvas.get_tk_widget().grid_remove()
+        self.canvas_FDP.get_tk_widget().grid_remove()
+        self.canvas_FPA.get_tk_widget().grid_remove()
 
 
         

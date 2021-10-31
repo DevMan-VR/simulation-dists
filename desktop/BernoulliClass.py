@@ -20,6 +20,7 @@ class BernoulliClass:
         self.input3 = Entry(master)
         self.canvas = None
         self.figure = None
+        self.name ="Bernoulli"
         
 
         #mu, sigma = 0, 0.2 # media y desvio estandar
@@ -178,6 +179,10 @@ class BernoulliClass:
             return 1
 
 
+
+    def clearGraph(self):
+        self.canvas_FDP.get_tk_widget().grid_remove()
+        self.canvas_FPA.get_tk_widget().grid_remove()
 
 
 

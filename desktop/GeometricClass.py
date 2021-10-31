@@ -18,8 +18,10 @@ class GeometricClass:
         self.input2 = Entry(master)
         self.label3 = Label(master, text="V.A.", height=1)
         self.input3 = Entry(master)
-        self.canvas = None
+        self.canvas_FDP = None
+        self.canvas_FPA = None
         self.figure = None
+        self.name="Geometrica"
         
 
         #mu, sigma = 0, 0.2 # media y desvio estandar
@@ -98,9 +100,9 @@ class GeometricClass:
         self.figure.add_subplot(111).vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 
         
-        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(column=1,row=5)
+        self.canvas_FDP = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
+        self.canvas_FDP.draw()
+        self.canvas_FDP.get_tk_widget().grid(column=1,row=5)
 
 
     def renderFPA(self):
@@ -125,15 +127,16 @@ class GeometricClass:
         self.figure.add_subplot(111).vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 
         
-        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(column=3,row=5)
+        self.canvas_FPA = FigureCanvasTkAgg(self.figure, master=self.master)  # A tk.DrawingArea.
+        self.canvas_FPA.draw()
+        self.canvas_FPA.get_tk_widget().grid(column=3,row=5)
 
 
 
 
     def clearGraph(self):
-        self.canvas.get_tk_widget().grid_remove()
+        self.canvas_FDP.get_tk_widget().grid_remove()
+        self.canvas_FDP.get_tk_widget().grid_remove()
 
 
         

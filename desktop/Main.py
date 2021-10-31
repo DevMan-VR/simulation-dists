@@ -87,11 +87,15 @@ class MainClass:
     def render_dist_options(self,dist):
 
             #Si ya hay definido un current distribution entonces se le remueven sus componentes (clean up)
-            if self.currentDistribution != None:
+            if self.currentDistribution != None and self.currentDistribution.name != dist:
+                print("Now we are cleaning")
+                print(self.currentDistribution)
                 self.currentDistribution.removeWidgets()
                 self.currentDistribution.removeVA()
                 self.currentDistribution.clearGraph()
                 self.currentDistribution = None
+
+                
 
 
             if dist == "Normal":
@@ -173,7 +177,6 @@ class MainClass:
             self.Poisson.renderVA()
             print("Entro en caso de Poisson VA")
         elif dist == "Exponencial":
-            self.Exponential.setLambda()
             self.Exponential.renderVA()
             
             print("Entro en caso de Exponential VA")

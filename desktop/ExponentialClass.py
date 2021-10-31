@@ -17,9 +17,11 @@ class ExponentialClass:
         self.input1 = Entry(master)
         self.label3 = Label(master, text="V.A.", height=1)
         self.input3 = Entry(master)
-        self.canvas = None
+        self.canvas_FDP = None
+        self.canvas_FPA = None
         self.figure = None
         self.lamb = None
+        self.name = "Exponencial"
         
 
         #mu, sigma = 0, 0.2 # media y desvio estandar
@@ -36,8 +38,6 @@ class ExponentialClass:
         self.input3.grid(column=1,row=3)
 
 
-
-          
 
 
 
