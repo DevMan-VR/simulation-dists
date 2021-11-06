@@ -35,12 +35,12 @@ Responsabilidades
 - Poisson - Ian
 - Binomial - Ian
 - Geometrica - Ian
-- Exponencial - Manu
-- Erlang - Manu
-- Uniforme Continua - Manu
-- Chi cuadrado - Manu
-- T Student - Manu
-- Pareto - Manu
-- Weibull - Manu
-- Triangular - Manu
+- Exponencial - Manu 			[OK]
+- Erlang - Manuel				[??]
+- Uniforme Continua - Manuel	[??]
+- Chi cuadrado - Manu 			[??]
+- T Student - Manu 				[??]
+- Pareto - Manu 				[??]
+- Weibull - Manu 				[??]
+- Triangular - Manu 	 		[??]
 

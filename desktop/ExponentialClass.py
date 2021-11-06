@@ -127,9 +127,6 @@ class ExponentialClass:
 
 
 
-    
-
-
         
     def va_pseudo_exp_generate(self,size=100):
 
