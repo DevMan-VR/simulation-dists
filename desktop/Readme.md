@@ -17,7 +17,7 @@ pip3 install seaborn
 
 Y finalmente para poder ejecutar el programa se debe instalar tkinter para python 3:
 sudo apt-get install python3-tk
-
+sudo apt-get install python3-pil python3-pil.imagetk
 
 Para ejecutar el proyecto hay que ejecutar el archivo Main.py dentro de la carpeta Tkinter
 
